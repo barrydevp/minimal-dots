@@ -48,3 +48,4 @@ autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType p4 set autoindent expandtab shiftwidth=4 softtabstop=4 tabstop=4
