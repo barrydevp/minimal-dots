@@ -42,6 +42,23 @@ nnoremap <silent><leader>d "_d
 nnoremap <silent><leader>i gg=G``<CR>
 nnoremap <leader>- :vsplit<CR>
 nnoremap <leader>_ :split<CR>
+vnoremap < <gv
+vnoremap > >gv
+
+" window movement
+function! TmuxMove(direction)
+  let wnr = winnr()
+  silent! execute 'wincmd ' . a:direction
+  " If the winnr is still the same after we moved, it is the last pane
+  if wnr == winnr()
+    call system('tmux select-pane -' . tr(a:direction, 'phjkl', 'lLDUR'))
+  end
+endfunction
+  
+noremap <silent> c-h> :call muxMove('h')<cr>
+noremap <silent> c-j> :call muxMove('j')<cr>
+noremap <silent> c-k> :call muxMove('k')<cr>
+noremap <silent> c-l> :call muxMove('l')<cr>
 
 " Autocomplete Settings
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
